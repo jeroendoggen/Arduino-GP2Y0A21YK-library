@@ -7,7 +7,6 @@ void setup()
 {
   Serial.begin(9600);
   Dist.begin(A0);
-  Dist.setARefVoltage(3);
 }
 
 void loop()
