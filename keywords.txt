@@ -1,7 +1,0 @@
-DistanceGP2Y0A21YK	KEYWORD1
-begin	KEYWORD2
-getDistanceRaw	KEYWORD2
-getDistanceVolt	KEYWORD2
-getDistanceCentimeter	KEYWORD2
-setAveraging	KEYWORD2
-setARefVoltage	KEYWORD2
