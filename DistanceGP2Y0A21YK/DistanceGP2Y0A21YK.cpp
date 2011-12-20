@@ -55,14 +55,14 @@ DistanceGP2Y0A21YK::begin(int distancePin)
 {
 	pinMode(distancePin, INPUT);
 	_distancePin=distancePin;
-	setAveraging(1);		      //1: all samples passed to higher level
+	setAveraging(100);		      //1: all samples passed to higher level
 	setARefVoltage(5);		      // 5 default situation
 		//setARefVoltage(3);  // 3.3V: put a wire between the AREF pin and the 3.3V VCC pin.
 		//This increases accuracy (and uses a different LUT)
 }
 
 /// <summary>
-/// setAveraging(int avg): Sets how many samples have to be averaged in getDistanceRaw, default value is 10.
+/// setAveraging(int avg): Sets how many samples have to be averaged in getDistanceCentimeter, default value is 100.
 /// </summary>
 void DistanceGP2Y0A21YK::setAveraging(int avg)
 {
@@ -74,7 +74,7 @@ void DistanceGP2Y0A21YK::setAveraging(int avg)
 /// </summary>
 int DistanceGP2Y0A21YK::getDistanceRaw()
 {
-	return analogRead(_distancePin);
+	return (analogRead(_distancePin));
 }
 
 /// <summary>
@@ -100,11 +100,11 @@ int DistanceGP2Y0A21YK::_mapGP2Y0A21YK_V(int value)
 {
 	if (_refVoltage==3)
 	{
-		return map(value,0,1024,0,3300);
+		return map(value,0,1023,0,3300);
 	}
 	else
 	{
-		return map(value,0,1024,0,5000);
+		return map(value,0,1023,0,5000);
 	}
 }
 
@@ -116,11 +116,21 @@ int DistanceGP2Y0A21YK::_mapGP2Y0A21YK_CM(int value)
 {
 	if (_refVoltage == 3)
 	{
-		return(transferFunctionLUT3V[(getDistanceRaw()/4)]);
+		int sum = 0;
+		for (int i=0;i<_average;i++)
+		{
+			sum=sum+transferFunctionLUT3V[(getDistanceRaw()/4)];
+		}
+		return(sum/_average);
 	}
 	else
 	{
-		return(transferFunctionLUT5V[(getDistanceRaw()/4)]);
+		int sum = 0;
+		for (int i=0;i<_average;i++)
+		{
+			sum=sum+transferFunctionLUT5V[(getDistanceRaw()/4)];
+		}
+		return(sum/_average);
 	}
 }
 
