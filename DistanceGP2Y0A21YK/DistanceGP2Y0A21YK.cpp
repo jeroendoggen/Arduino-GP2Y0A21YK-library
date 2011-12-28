@@ -146,4 +146,32 @@ void DistanceGP2Y0A21YK::setARefVoltage(int refV)
 	}
 }
 
+/// <summary>
+/// isCloser: check whether the distance to the detected object is smaller than a given threshold
+/// </summary>
+boolean DistanceGP2Y0A21YK::isCloser(int threshold)
+{
+	if (threshold>getDistanceCentimeter())
+	{
+		return (true);
+	}
+	else
+	{
+		return (false);
+	}
+}
 
+/// <summary>
+/// isFarther: check whether the distance to the detected object is smaller than a given threshold
+/// </summary>
+boolean DistanceGP2Y0A21YK::isFarther(int threshold)
+{
+	if (threshold<getDistanceCentimeter())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

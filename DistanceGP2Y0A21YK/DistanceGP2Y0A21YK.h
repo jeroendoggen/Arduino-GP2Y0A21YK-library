@@ -5,9 +5,9 @@
  ************************************************************************************************************
  * Version History:                                                                                         *
  *  Version 0.1: getDistanceRaw, getDistanceVolt, getDistanceCentimeter (with incorrect LUT)                *
- *  Version 0.2: Correct LUT for 5V ADC                                                                                                      *
+ *  Version 0.2: Correct LUT for 5V ADC                                                                     *
  * Roadmap:                                                                                                 *
- *  Version 0.3: Correct LUT for 3.3V ADC                                                                             *
+ *  Version 0.3: Correct LUT for 3.3V ADC                                                                   *
  *  Version 0.3: Take sensor height above the ground into account                                           *
  *  Version 0.4; Take object type into account (differtent LUT for wooden vs stone walls?? ...)             *
  ************************************************************************************************************
@@ -40,6 +40,9 @@ class DistanceGP2Y0A21YK
 		int getDistanceRaw();
 		int getDistanceVolt();
 		int getDistanceCentimeter();
+
+		boolean isCloser(int threshold);
+		boolean isFarther(int threshold);
 
 		void setAveraging(int avg);    
 		void setARefVoltage(int _refV);
