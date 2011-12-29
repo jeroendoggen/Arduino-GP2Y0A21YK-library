@@ -4,12 +4,12 @@
  * Datasheet: http://www.sparkfun.com/datasheets/Components/GP2Y0A21YK.pdf                                  *
  ************************************************************************************************************
  * Version History:                                                                                         *
- *  Version 0.1: getDistanceRaw, getDistanceVolt, getDistanceCentimeter (with incorrect LUT)                *
- *  Version 0.2: Correct LUT for 5V ADC                                                                     *
+ *  Version 0.1: getDistanceRaw, getDistanceVolt, getDistanceCentimeter (with LUT based on datasheet)       *
+ *  Version 0.2: Correct LUT for 5V ADC (based on measurements)                                             *
  * Roadmap:                                                                                                 *
- *  Version 0.3: Correct LUT for 3.3V ADC                                                                   *
- *  Version 0.3: Take sensor height above the ground into account                                           *
- *  Version 0.4; Take object type into account (differtent LUT for wooden vs stone walls?? ...)             *
+ *  Version 0.3: Correct LUT for 3.3V ADC (based on measurements)                                                                   *
+ *  Version 0.4: Move LUTs to flash to conserve RAM                                                         *
+ *  Version 0.5: Take sensor height above the ground into account                                           *
  ************************************************************************************************************
  * This library is free software; you can redistribute it and/or                                            *
  * modify it under the terms of the GNU Lesser General Public                                               *
