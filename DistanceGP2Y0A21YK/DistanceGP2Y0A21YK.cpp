@@ -119,7 +119,7 @@ int DistanceGP2Y0A21YK::_mapGP2Y0A21YK_CM(int value)
 		int sum = 0;
 		for (int i=0;i<_average;i++)
 		{
-			sum=sum+transferFunctionLUT3V[(getDistanceRaw()/4)];
+			sum=sum + pgm_read_byte_near (transferFunctionLUT3V + (getDistanceRaw()/4));
 		}
 		return(sum/_average);
 	}
@@ -128,7 +128,7 @@ int DistanceGP2Y0A21YK::_mapGP2Y0A21YK_CM(int value)
 		int sum = 0;
 		for (int i=0;i<_average;i++)
 		{
-			sum=sum+transferFunctionLUT5V[(getDistanceRaw()/4)];
+			sum=sum + pgm_read_byte_near (transferFunctionLUT5V + (getDistanceRaw()/4));
 		}
 		return(sum/_average);
 	}

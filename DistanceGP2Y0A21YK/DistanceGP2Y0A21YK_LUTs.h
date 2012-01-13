@@ -1,4 +1,4 @@
-const byte transferFunctionLUT3V[256] =
+prog_uchar transferFunctionLUT3V[] PROGMEM =
 	{
 		255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
 		255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 79,
@@ -18,7 +18,7 @@ const byte transferFunctionLUT3V[256] =
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
 
-const byte transferFunctionLUT5V[256] =
+prog_uchar transferFunctionLUT5V[] PROGMEM =
 	{
 		255, 127, 93, 77, 67, 60, 54, 50, 47, 44, 42, 40, 38, 36, 35, 34,
 		32, 31, 30, 30, 29, 28, 27, 27, 26, 26, 25, 25, 24, 22, 20, 19,

@@ -6,10 +6,12 @@
  * Version History:                                                                                         *
  *  Version 0.1: getDistanceRaw, getDistanceVolt, getDistanceCentimeter (with LUT based on datasheet)       *
  *  Version 0.2: Correct LUT for 5V ADC (based on measurements)                                             *
+ *  Version 0.3: Move LUTs to flash to save some RAM (512 Bytes)    
  * Roadmap:                                                                                                 *
- *  Version 0.3: Correct LUT for 3.3V ADC (based on measurements)                                                                   *
- *  Version 0.4: Move LUTs to flash to conserve RAM                                                         *
+ *  Version 0.4: Correct LUT for 3.3V ADC (based on measurements)                                           *
  *  Version 0.5: Take sensor height above the ground into account                                           *
+ *  Version 0.6: Compare different sensors, calculate replacement LUT (at runtime)                          *
+ *               based on calibration points                                                                *
  ************************************************************************************************************
  * This library is free software; you can redistribute it and/or                                            *
  * modify it under the terms of the GNU Lesser General Public                                               *
