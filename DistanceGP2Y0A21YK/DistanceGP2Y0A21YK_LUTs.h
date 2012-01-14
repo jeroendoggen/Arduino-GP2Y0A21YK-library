@@ -1,3 +1,6 @@
+// These are regular byte arrays, but the 'prog_uchar' type is needed
+// to place this arrays in program memory using the PROGMEM keyword
+
 prog_uchar transferFunctionLUT3V[] PROGMEM =
 	{
 		255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
