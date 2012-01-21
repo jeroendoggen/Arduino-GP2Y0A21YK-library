@@ -1,6 +1,6 @@
 /************************************************************************************************************
  * DistanceGP2Y0A21YK.h - Arduino library for retrieving data from the analog GP2Y0A21YK IR Distance sensor *
- * Copyright 2011 Jeroen Doggen (jeroendoggen@gmail.com)                                                    *
+ * Copyright 2011-2012 Jeroen Doggen (jeroendoggen@gmail.com)                                               *
  * For more information: variable declaration, changelog,... see DistanceGP2Y0A21YK.h                       *
  ************************************************************************************************************
  * This library is free software; you can redistribute it and/or                                            *
@@ -23,7 +23,6 @@
 /// For more information: variable declaration, changelog,... see DistanceGP2Y0A21YK.h
 /// </summary>
 
-#include <Arduino.h>
 #include <DistanceGP2Y0A21YK.h>
 #include <DistanceGP2Y0A21YK_LUTs.h>
 

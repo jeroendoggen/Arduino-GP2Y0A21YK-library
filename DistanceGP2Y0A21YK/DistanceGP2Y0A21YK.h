@@ -1,6 +1,6 @@
 /************************************************************************************************************
  * DistanceGP2Y0A21YK.h - Arduino library for retrieving data from the analog GP2Y0A21YK IR Distance sensor *
- * Copyright 2011 Jeroen Doggen (jeroendoggen@gmail.com)                                                    *
+ * Copyright 2011-2012 Jeroen Doggen (jeroendoggen@gmail.com)                                               *
  * Datasheet: http://www.sparkfun.com/datasheets/Components/GP2Y0A21YK.pdf                                  *
  ************************************************************************************************************
  * Version History:                                                                                         *
@@ -30,7 +30,13 @@
 
 #ifndef DistanceGP2Y0A21YK_h
 #define DistanceGP2Y0A21YK_h
-#include <Arduino.h>
+
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+#else
+  #include "WProgram.h"
+  #include <pins_arduino.h>
+#endif
 
 class DistanceGP2Y0A21YK
 {
