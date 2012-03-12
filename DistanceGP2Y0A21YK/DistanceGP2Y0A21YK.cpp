@@ -1,22 +1,22 @@
-/************************************************************************************************************
- * DistanceGP2Y0A21YK.h - Arduino library for retrieving data from the analog GP2Y0A21YK IR Distance sensor *
- * Copyright 2011-2012 Jeroen Doggen (jeroendoggen@gmail.com)                                               *
- * For more information: variable declaration, changelog,... see DistanceGP2Y0A21YK.h                       *
- ************************************************************************************************************
- * This library is free software; you can redistribute it and/or                                            *
- * modify it under the terms of the GNU Lesser General Public                                               *
- * License as published by the Free Software Foundation; either                                             *
- * version 2.1 of the License, or (at your option) any later version.                                       *
- *                                                                                                          *
- * This library is distributed in the hope that it will be useful,                                          *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of                                           *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU                                        *
- * Lesser General Public License for more details.                                                          *
- *                                                                                                          *
- * You should have received a copy of the GNU Lesser General Public                                         *
- * License along with this library; if not, write to the Free Software                                      *
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA                               *
- ***********************************************************************************************************/
+/******************************************************************************
+ * DistanceGP2Y0A21YK - Arduino library for retrieving data from the analog   *
+ *    GP2Y0A21YK IR Distance sensor                                           *
+ * Copyright 2011-2012 Jeroen Doggen (jeroendoggen@gmail.com)                 *
+ ******************************************************************************
+ * This library is free software; you can redistribute it and/or              *
+ * modify it under the terms of the GNU Lesser General Public                 *
+ * License as published by the Free Software Foundation; either               *
+ * version 2.1 of the License, or (at your option) any later version.         *
+ *                                                                            *
+ * This library is distributed in the hope that it will be useful,            *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of             *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU          *
+ * Lesser General Public License for more details.                            *
+ *                                                                            *
+ * You should have received a copy of the GNU Lesser General Public           *
+ * License along with this library; if not, write to the Free Software        *
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA *
+ *****************************************************************************/
 
 /// <summary>
 /// DistanceGP2Y0A21YK.cpp - Library for retrieving data from the GP2Y0A21YK IR Distance sensor.
@@ -36,8 +36,7 @@ DistanceGP2Y0A21YK::DistanceGP2Y0A21YK()
 /// <summary>
 /// Begin function to set pins: distancePin = A0.
 /// </summary>
-void
-DistanceGP2Y0A21YK::begin()
+void DistanceGP2Y0A21YK::begin()
 {
 	begin (A0);
 }
@@ -47,8 +46,7 @@ DistanceGP2Y0A21YK::begin()
 /// - int _distancePin: number indicating the distance to an object: ANALOG IN
 /// When you use begin() without variables standard values are loaded: A0
 /// </summary>
-void
-DistanceGP2Y0A21YK::begin(int distancePin)
+void DistanceGP2Y0A21YK::begin(int distancePin)
 {
 	pinMode(distancePin, INPUT);
 	_distancePin=distancePin;
@@ -56,6 +54,21 @@ DistanceGP2Y0A21YK::begin(int distancePin)
 	setARefVoltage(5);		      // 5: default analog reference of 5 volts (on 5V Arduino boards) or 3.3 volts (on 3.3V Arduino boards)
 		//setARefVoltage(3);  // external analog reference: for 3.3V: put a wire between the AREF pin and the 3.3V VCC pin.
 		//This increases accuracy (and uses a different LUT)
+}
+
+/// <summary>
+/// Begin variables
+/// - int _distancePin: number indicating the distance to an object: ANALOG IN
+/// - int vccPin: pin connected to the vcc pin of the sensor (switch the sensor on/off)
+/// When you use begin() without variables standard values are loaded: A0
+/// </summary>
+void DistanceGP2Y0A21YK::begin(int distancePin, int vccPin)
+{
+	_vccPin=vccPin;
+	begin (distancePin);
+	pinMode(_vccPin, OUTPUT); 
+	setEnabled(true);
+	//digitalWrite(vccPin, HIGH); 
 }
 
 /// <summary>
@@ -71,7 +84,15 @@ void DistanceGP2Y0A21YK::setAveraging(int avg)
 /// </summary>
 int DistanceGP2Y0A21YK::getDistanceRaw()
 {
-	return (analogRead(_distancePin));
+	if (_enabled == true)
+	{
+		return (analogRead(_distancePin));
+	}
+	else
+	{
+		return (255);	
+	}
+	
 }
 
 /// <summary>
@@ -138,7 +159,6 @@ int DistanceGP2Y0A21YK::_mapGP2Y0A21YK_CM(int value)
 /// </summary>
 void DistanceGP2Y0A21YK::setARefVoltage(int refV)
 {
-	_refVoltage=refV;
 	if (_refVoltage == 5)
 	{
 		analogReference(DEFAULT);
@@ -147,6 +167,7 @@ void DistanceGP2Y0A21YK::setARefVoltage(int refV)
 	{
 		analogReference(EXTERNAL);
 	}
+	_refVoltage=refV;
 }
 
 /// <summary>
@@ -176,5 +197,21 @@ boolean DistanceGP2Y0A21YK::isFarther(int threshold)
 	else
 	{
 		return false;
+	}
+}
+
+/// <summary>
+/// setEnabled: enable or disable the sensor (only works when sensor Vcc is connected to digital output pin)
+/// </summary>
+void DistanceGP2Y0A21YK::setEnabled(bool status)
+{
+	_enabled = status;
+	if (_enabled)
+	{
+		digitalWrite(_vccPin, HIGH);
+	}
+	else
+	{
+		digitalWrite(_vccPin, LOW);	
 	}
 }
