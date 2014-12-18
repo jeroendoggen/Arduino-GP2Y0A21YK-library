@@ -48,7 +48,8 @@ void DistanceGP2Y0A21YK::begin()
 /// </summary>
 void DistanceGP2Y0A21YK::begin(int distancePin)
 {
-	pinMode(distancePin, INPUT);
+  setEnabled(true);
+  pinMode(distancePin, INPUT);
 	_distancePin=distancePin;
 	setAveraging(1);		      //1: all samples passed to higher level
 	setARefVoltage(5);		      // 5: default analog reference of 5 volts (on 5V Arduino boards) or 3.3 volts (on 3.3V Arduino boards)
@@ -90,7 +91,7 @@ int DistanceGP2Y0A21YK::getDistanceRaw()
 	}
 	else
 	{
-		return (255);	
+		return (1023);
 	}
 	
 }
