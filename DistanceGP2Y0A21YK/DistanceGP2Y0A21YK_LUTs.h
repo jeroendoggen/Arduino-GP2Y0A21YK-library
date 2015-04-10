@@ -22,7 +22,7 @@
 // to place these arrays in program memory using the PROGMEM keyword
 // more info: http://arduino.cc/en/Reference/PROGMEM
 
-prog_uchar transferFunctionLUT3V[] PROGMEM =
+const unsigned char transferFunctionLUT3V[] PROGMEM =
 	{
 		255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
 		255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 79,
@@ -42,7 +42,7 @@ prog_uchar transferFunctionLUT3V[] PROGMEM =
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
 
-prog_uchar transferFunctionLUT5V[] PROGMEM =
+const unsigned char transferFunctionLUT5V[] PROGMEM =
 	{
 		255, 127, 93, 77, 67, 60, 54, 50, 47, 44, 42, 40, 38, 36, 35, 34,
 		32, 31, 30, 30, 29, 28, 27, 27, 26, 26, 25, 25, 24, 22, 20, 19,
