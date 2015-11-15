@@ -44,8 +44,7 @@ class DistanceGP2Y0A21YK
 {
 	public:
 		DistanceGP2Y0A21YK();
-		void begin();
-		void begin(int distancePin);
+		void begin(int distancePin = A0);
 		void begin(int distancePin, int vccPin);
 		int getDistanceRaw();
 		int getDistanceVolt();

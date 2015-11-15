@@ -34,14 +34,6 @@ DistanceGP2Y0A21YK::DistanceGP2Y0A21YK()
 }
 
 /// <summary>
-/// Begin function to set pins: distancePin = A0.
-/// </summary>
-void DistanceGP2Y0A21YK::begin()
-{
-	begin (A0);
-}
-
-/// <summary>
 /// Begin variables
 /// - int _distancePin: number indicating the distance to an object: ANALOG IN
 /// When you use begin() without variables standard values are loaded: A0
